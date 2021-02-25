@@ -7,14 +7,12 @@ public class Station : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Train")
-        {
             StartCoroutine(Win());
-        }
     }
 
     IEnumerator Win()
     {
         yield return new WaitForSeconds(1f);
-            WInLose.Instance.LevelDone();
+        WInLose.Instance.LevelDone();
     }
 }

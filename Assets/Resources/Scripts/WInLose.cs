@@ -13,8 +13,7 @@ public class WInLose : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-            return;
+        if (Instance != null) return;
         else Instance = this;
 
         Init();

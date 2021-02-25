@@ -51,33 +51,40 @@ public class BuildManager : MonoBehaviour
 
     public void BuildNewRoad(string type, Quaternion rotation)
     {
-            if (cachedTile == null)
-            {
-                Destroy(currentTile);
-                Destroy(currentSelectionRed);
-                currentTile = Instantiate(defaultTile, DigSite.transform.position, Quaternion.identity);
-            }
-            else
-            {
-                cachedTile.SetActive(true);
-                Destroy(currentTile);
-                Destroy(currentSelectionRed);
-            }
+        CheckCachedTile();
 
-            switch (type)
-            {
-                case "Left":
-                    road = Instantiate(leftTile, currentTile.transform.position, rotation);
-                    break;
-                case "Forward":
-                    road = Instantiate(forwardTile, currentTile.transform.position, rotation);
-                    break;
-                case "Right":
-                    road = Instantiate(rightTile, currentTile.transform.position, rotation);
-                    break;
-            }
+        switch (type)
+        {
+            case "Left":
+                road = Instantiate(leftTile, currentTile.transform.position, rotation);
+                break;
+            case "Forward":
+                road = Instantiate(forwardTile, currentTile.transform.position, rotation);
+                break;
+            case "Right":
+                road = Instantiate(rightTile, currentTile.transform.position, rotation);
+                break;
+        }
+
         allowed = false;
+
         StartCoroutine(waiter());
+    }
+
+    private void CheckCachedTile()
+    {
+        if (cachedTile == null)
+        {
+            Destroy(currentTile);
+            Destroy(currentSelectionRed);
+            currentTile = Instantiate(defaultTile, DigSite.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            cachedTile.SetActive(true);
+            Destroy(currentTile);
+            Destroy(currentSelectionRed);
+        }
     }
     IEnumerator waiter()
     {
