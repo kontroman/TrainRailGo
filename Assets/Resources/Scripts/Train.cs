@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-
-
     public static Train Instance { get; private set; }
+
     public int lag;
     private GameObject[] waypoints;
     private int index = 0;
@@ -18,7 +17,6 @@ public class Train : MonoBehaviour
     {
         if (Instance != null) return;
         else Instance = this;
-
     }
 
     private void Update()
