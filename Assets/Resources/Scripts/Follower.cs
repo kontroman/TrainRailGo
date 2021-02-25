@@ -13,6 +13,7 @@ public class Follower : MonoBehaviour
     }
     private void Update()
     {
+        speed = Train.Instance.speed - 0.02f;
         gameObject.transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
 
         Quaternion OriginalRot = transform.rotation;

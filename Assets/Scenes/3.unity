@@ -1064,6 +1064,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Train
       objectReference: {fileID: 0}
+    - target: {fileID: 6328565993251661501, guid: a3108153cfdd74548bf998b6263b9f28,
+        type: 3}
+      propertyPath: speed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328565993251661501, guid: a3108153cfdd74548bf998b6263b9f28,
+        type: 3}
+      propertyPath: defaultspeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6328565993251847010, guid: a3108153cfdd74548bf998b6263b9f28,
         type: 3}
       propertyPath: m_RootOrder
@@ -5991,7 +6001,7 @@ PrefabInstance:
     - target: {fileID: 5961728476486495317, guid: 112758741ee6907499f230379d2de239,
         type: 3}
       propertyPath: speed
-      value: 0.98
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 5961728476486495317, guid: 112758741ee6907499f230379d2de239,
         type: 3}

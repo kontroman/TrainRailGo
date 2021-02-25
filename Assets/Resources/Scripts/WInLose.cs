@@ -34,7 +34,7 @@ public class WInLose : MonoBehaviour
         start = true;
     }
 
-    private void LateUpdate()
+    /*private void LateUpdate()
     {
         if(win || lose) return;
         if (start)
@@ -44,7 +44,7 @@ public class WInLose : MonoBehaviour
                 GameOver();
             }
         }
-    }
+    }*/
 
     public void GameOver()
     {
