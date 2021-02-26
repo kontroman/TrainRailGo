@@ -22,6 +22,8 @@ public class BuildManager : MonoBehaviour
     private GameObject defaultTile;
 
     public bool allowed = true;
+    private bool last = false;
+    public bool LastTile = false;
     private GameObject road;
 
     public GameObject CachedTile
@@ -51,24 +53,28 @@ public class BuildManager : MonoBehaviour
 
     public void BuildNewRoad(string type, Quaternion rotation)
     {
-        CheckCachedTile();
-
-        switch (type)
+        if (!last)
         {
-            case "Left":
-                road = Instantiate(leftTile, currentTile.transform.position, rotation);
-                break;
-            case "Forward":
-                road = Instantiate(forwardTile, currentTile.transform.position, rotation);
-                break;
-            case "Right":
-                road = Instantiate(rightTile, currentTile.transform.position, rotation);
-                break;
+            CheckCachedTile();
+
+            switch (type)
+            {
+                case "Left":
+                    road = Instantiate(leftTile, currentTile.transform.position, rotation);
+                    break;
+                case "Forward":
+                    road = Instantiate(forwardTile, currentTile.transform.position, rotation);
+                    break;
+                case "Right":
+                    road = Instantiate(rightTile, currentTile.transform.position, rotation);
+                    break;
+            }
+
+            allowed = false;
+            if (LastTile) last = true;
+            StartCoroutine(waiter());
+
         }
-
-        allowed = false;
-
-        StartCoroutine(waiter());
     }
 
     private void CheckCachedTile()
@@ -94,9 +100,12 @@ public class BuildManager : MonoBehaviour
     }
     public void AssignNewDigAndSelection(Transform _dig, Transform _selection)
     {
-        currentTile = Instantiate(DigSite, _dig.position, Quaternion.identity);
-        currentSelectionRed = Instantiate(SelectionRed, _selection.position, Quaternion.identity);
-        cachedTile.SetActive(false);
+        if (!last)
+        {
+            currentTile = Instantiate(DigSite, _dig.position, Quaternion.identity);
+            currentSelectionRed = Instantiate(SelectionRed, _selection.position, Quaternion.identity);
+            cachedTile.SetActive(false);
+        }
     }
 
 }

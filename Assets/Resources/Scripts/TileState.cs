@@ -7,7 +7,7 @@ public enum State
     Block,
     Roadable,
     Road,
-    BuildProgress
+    Station
 };
 
 public class TileState : MonoBehaviour
@@ -16,6 +16,6 @@ public class TileState : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 }

@@ -12,7 +12,7 @@ public class Station : MonoBehaviour
 
     IEnumerator Win()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
         WInLose.Instance.LevelDone();
     }
 }

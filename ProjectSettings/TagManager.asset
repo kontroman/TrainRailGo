@@ -16,6 +16,7 @@ TagManager:
   - Dig
   - wp
   - Train
+  - Road
   layers:
   - Default
   - TransparentFX

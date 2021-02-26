@@ -6,9 +6,9 @@ using System.Linq;
 public class Waypoint : MonoBehaviour
 {
     public static Waypoint Instance { get; private set; }
-    private GameObject[] waypoints;
+    private List<Transform> waypoints;
 
-    public GameObject[] WayPoints
+    public List<Transform> WayPoints
     {
         get { return waypoints; }
     }
@@ -17,20 +17,19 @@ public class Waypoint : MonoBehaviour
     {
         if (Instance != null) return;
         else Instance = this;
-
-    }
-    private void Update()
-    {
-        waypoints = GameObject.FindGameObjectsWithTag("wp");
-        SortWayPoints();
+        Init();
     }
 
-    private void SortWayPoints()
+    public void Init()
     {
-        SortedDictionary<string, GameObject> sortedTiles = new SortedDictionary<string, GameObject>();
-        for (int i = 0; i < waypoints.Length; i++)
-            sortedTiles.Add(waypoints[i].name, waypoints[i]);
+        waypoints = new List<Transform>
+        {
+            gameObject.transform
+        };
+    }
 
-        waypoints = sortedTiles.Values.ToArray();
+    public void AddPoint(Transform _point)
+    {
+        waypoints.Add(_point);
     }
 }

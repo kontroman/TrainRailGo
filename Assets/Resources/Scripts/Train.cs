@@ -6,8 +6,7 @@ public class Train : MonoBehaviour
 {
     public static Train Instance { get; private set; }
 
-    public int lag;
-    private GameObject[] waypoints;
+    public float tileDistance;
     private int index = 0;
     public float defaultspeed;
     public float speed;
@@ -21,30 +20,30 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        if (lag > 2) speed = 0.75f * speed +  speed;
+        if (tileDistance > 2 && speed == defaultspeed) speed = 2f * speed;
         else speed = defaultspeed;
+
         if (delay <= 0)
         {
-            UpdateList();
-            gameObject.transform.position = Vector3.MoveTowards(transform.position, waypoints[index].transform.position, speed * Time.deltaTime);
-            if (gameObject.transform.position == waypoints[index].transform.position)
+            gameObject.transform.position = Vector3.MoveTowards(transform.position, Waypoint.Instance.WayPoints[index].position, speed * Time.deltaTime);
+            if (gameObject.transform.position == Waypoint.Instance.WayPoints[index].position)
             {
                 index++;
-                lag -=1;
+                if (index == Waypoint.Instance.WayPoints.Count) WInLose.Instance.GameOver();
+                if(tileDistance > 0) tileDistance -= .5f;
             }
-
-            Quaternion OriginalRot = transform.rotation;
-            transform.LookAt(waypoints[index].transform.position);
-            Quaternion NewRot = transform.rotation;
-            transform.rotation = OriginalRot;
-            transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, 4 * speed * Time.deltaTime);
+            RotateToTarget();
         }
         else
             delay -= Time.deltaTime;
     }
 
-    private void UpdateList()
+    private void RotateToTarget()
     {
-        waypoints = GameObject.FindGameObjectsWithTag("wp");
+        Quaternion OriginalRot = transform.rotation;
+        transform.LookAt(Waypoint.Instance.WayPoints[index].position);
+        Quaternion NewRot = transform.rotation;
+        transform.rotation = OriginalRot;
+        transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, 4 * speed * Time.deltaTime);
     }
 }

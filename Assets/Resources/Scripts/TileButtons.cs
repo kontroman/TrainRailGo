@@ -30,7 +30,7 @@ public class TileButtons : MonoBehaviour
         if (BuildManager.Instance.allowed)
         {
             // LevelTask.Instance.CurrentTiles -= 1;
-            Train.Instance.lag++;
+            Train.Instance.tileDistance++;
             BuildManager.Instance.BuildNewRoad(direction, gameObject.transform.rotation);
             RotateButtons();
         }
