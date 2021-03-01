@@ -94,14 +94,16 @@ public class BuildManager : MonoBehaviour
     }
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds(1.5f);
-        allowed = true;
+        yield return new WaitForSeconds(.3f);
         AssignNewDigAndSelection(cachedTile.transform, cachedTile.transform);
+        yield return new WaitForSeconds(0.7f);
+        allowed = true;
     }
     public void AssignNewDigAndSelection(Transform _dig, Transform _selection)
     {
         if (!last)
         {
+            Instantiate(Resources.Load<GameObject>("Prefabs/DustStorm"), _dig.transform.position, Quaternion.Euler(new Vector3(-180f, 0f, -90f)));
             currentTile = Instantiate(DigSite, _dig.position, Quaternion.identity);
             currentSelectionRed = Instantiate(SelectionRed, _selection.position, Quaternion.identity);
             cachedTile.SetActive(false);

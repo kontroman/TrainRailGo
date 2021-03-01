@@ -20,7 +20,7 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        if (tileDistance > 2 && speed == defaultspeed) speed = 2f * speed;
+        if (tileDistance > 3 && speed == defaultspeed) speed = 2f * speed;
         else speed = defaultspeed;
 
         if (delay <= 0)

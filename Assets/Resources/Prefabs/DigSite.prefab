@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3447682107518793268}
   - component: {fileID: 3417663188261246732}
   - component: {fileID: 3425941829188692895}
+  - component: {fileID: 8961825390763007444}
   m_Layer: 0
   m_Name: DigSite
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf051fba995609b459f0eb4baf4bb478, type: 2}
+  - {fileID: 2100000, guid: 6283ad8b4b2ccc54abb5dccff1461ef2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,3 +109,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 1
+--- !u!114 &8961825390763007444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426525472068998288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9d3dfce80009745b5f5daba3dba1d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
